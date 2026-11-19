@@ -2,7 +2,14 @@
 
 Detecção de recursos e barreiras de acessibilidade em fotos e em vídeo em tempo real, com um modelo YOLO11 customizado. Projeto da atividade *Applied Computer Vision | Enxergando o mundo real*, no contexto da plataforma Inclui+.
 
-**Integrantes:** _nomes e RMs_
+## Integrantes
+
+| Nome completo | RM |
+|---|---:|
+| Kaiky Alvaro de Miranda | RM98118 |
+| Bruno Eduardo Caputo Paulino | RM558303 |
+| Juan Pinheiro de França | RM552202 |
+| Lucas Rodrigues da Silva | RM98344 |
 
 > **Estado do repositório.** O código, o notebook de treino e os testes estão prontos. O modelo ainda **não foi treinado**: faltam as imagens (passo 1), o treino no Colab (passo 2) e os números da seção [Resultados](#resultados). O arquivo `weights/best.pt` só existe depois do treino.
 
