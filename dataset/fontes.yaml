@@ -8,15 +8,12 @@
 # Classes finais, na ordem dos IDs.
 # Para o escopo reduzido da proposta, deixe só rampa, escada, corrimao e piso_tatil:
 # as caixas das outras classes passam a ser descartadas.
+
 classes:
   - rampa
   - escada
   - corrimao
-  - elevador
-  - barra_apoio
-  - vaga_pcd
   - piso_tatil
-  - simbolo_acessibilidade
 
 divisao:
   treino: 0.7
@@ -25,7 +22,6 @@ divisao:
 semente: 42
 
 fontes:
-  # Stairs | Handrail Detector (ITLabRoom, CC BY 4.0). Classes: downstairs, handrail, upstairs.
   - nome: stairs-handrail
     pasta: brutos/stairs-handrail
     origem: publico
@@ -34,32 +30,23 @@ fontes:
       downstairs: escada
       handrail: corrimao
 
-  # Stairs (BarrierFreeNavigation, CC BY 4.0). Classe: stairs.
   - nome: stairs-barrierfree
     pasta: brutos/stairs-barrierfree
     origem: publico
     mapa:
       stairs: escada
 
-  # Fotos do grupo, anotadas no Roboflow ou no CVAT já com os nomes finais das classes
-  # (por isso não precisam de mapa).
-  - nome: fotos-proprias
-    pasta: brutos/fotos-proprias
-    origem: proprio
+  - nome: detector-rampas
+    pasta: brutos/detector-rampas
+    origem: publico
+    mapa:
+      "rampa": rampa
+      "ramp - v1 2026-05-30 3-13pm": rampa
+      "detector-rampas - v1 2026-05-27 10-04pm": rampa
 
-  # Fotos sem nenhum recurso de acessibilidade. Não precisam de anotação.
-  - nome: negativas
-    pasta: brutos/negativas
-    origem: proprio
-    negativos: true
-
-  # Outras fontes entram do mesmo jeito. O lado esquerdo do mapa deve ter exatamente os
-  # nomes do data.yaml do export; o script avisa se algum não existir. Classes fora do
-  # mapa (pessoa, buraco na via etc.) são descartadas.
-  # - nome: accessibility-barrierfree
-  #   pasta: brutos/accessibility-barrierfree
-  #   origem: publico
-  #   mapa:
-  #     ramp: rampa
-  #     stairs: escada
-  #     accessibility symbol: simbolo_acessibilidade
+  - nome: braille-block
+    pasta: brutos/braille-block
+    origem: publico
+    mapa:
+      braille_block: piso_tatil
+      braille_block_unusable: piso_tatil
