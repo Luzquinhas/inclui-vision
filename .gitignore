@@ -1,0 +1,24 @@
+# Imagens e rótulos não vão para o Git: o README diz de onde baixar e como preparar.
+dataset/brutos/
+dataset/train/
+dataset/valid/
+dataset/test/
+dataset/*.cache
+
+# Saídas de treino e de validação do Ultralytics
+runs/
+results/validacao/
+results/*/validacao/
+*.pt
+!weights/best.pt
+
+# Python e editores
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+resultado.jpg

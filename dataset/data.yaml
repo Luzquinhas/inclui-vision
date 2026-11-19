@@ -1,0 +1,16 @@
+# Inclui+ Vision: treino com todas as fontes.
+# Este arquivo é regravado por src/preparar_dataset.py com as classes de dataset/fontes.yaml.
+# Sem a chave 'path', os caminhos valem a partir da pasta deste arquivo, então o treino
+# funciona igual no Colab e no computador, de qualquer pasta de trabalho.
+train: train/images
+val: valid/images
+test: test/images
+names:
+  0: rampa
+  1: escada
+  2: corrimao
+  3: elevador
+  4: barra_apoio
+  5: vaga_pcd
+  6: piso_tatil
+  7: simbolo_acessibilidade

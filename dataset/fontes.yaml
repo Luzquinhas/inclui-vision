@@ -1,0 +1,65 @@
+# Inclui+ Vision: de onde vêm as imagens e como as classes de cada fonte viram as nossas.
+#
+# Cada fonte é uma pasta no formato YOLO (export "YOLOv8" ou "YOLOv11" do Roboflow, ou o do CVAT)
+# com o data.yaml dela dentro. Os caminhos são relativos a este arquivo.
+# Depois de editar, rode a partir da raiz do repositório:
+#   python src/preparar_dataset.py --config dataset/fontes.yaml --saida dataset --limpar
+
+# Classes finais, na ordem dos IDs.
+# Para o escopo reduzido da proposta, deixe só rampa, escada, corrimao e piso_tatil:
+# as caixas das outras classes passam a ser descartadas.
+classes:
+  - rampa
+  - escada
+  - corrimao
+  - elevador
+  - barra_apoio
+  - vaga_pcd
+  - piso_tatil
+  - simbolo_acessibilidade
+
+divisao:
+  treino: 0.7
+  validacao: 0.2
+  teste: 0.1
+semente: 42
+
+fontes:
+  # Stairs | Handrail Detector (ITLabRoom, CC BY 4.0). Classes: downstairs, handrail, upstairs.
+  - nome: stairs-handrail
+    pasta: brutos/stairs-handrail
+    origem: publico
+    mapa:
+      upstairs: escada
+      downstairs: escada
+      handrail: corrimao
+
+  # Stairs (BarrierFreeNavigation, CC BY 4.0). Classe: stairs.
+  - nome: stairs-barrierfree
+    pasta: brutos/stairs-barrierfree
+    origem: publico
+    mapa:
+      stairs: escada
+
+  # Fotos do grupo, anotadas no Roboflow ou no CVAT já com os nomes finais das classes
+  # (por isso não precisam de mapa).
+  - nome: fotos-proprias
+    pasta: brutos/fotos-proprias
+    origem: proprio
+
+  # Fotos sem nenhum recurso de acessibilidade. Não precisam de anotação.
+  - nome: negativas
+    pasta: brutos/negativas
+    origem: proprio
+    negativos: true
+
+  # Outras fontes entram do mesmo jeito. O lado esquerdo do mapa deve ter exatamente os
+  # nomes do data.yaml do export; o script avisa se algum não existir. Classes fora do
+  # mapa (pessoa, buraco na via etc.) são descartadas.
+  # - nome: accessibility-barrierfree
+  #   pasta: brutos/accessibility-barrierfree
+  #   origem: publico
+  #   mapa:
+  #     ramp: rampa
+  #     stairs: escada
+  #     accessibility symbol: simbolo_acessibilidade
