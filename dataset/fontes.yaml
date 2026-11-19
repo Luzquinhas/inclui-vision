@@ -5,9 +5,9 @@
 # Depois de editar, rode a partir da raiz do repositório:
 #   python src/preparar_dataset.py --config dataset/fontes.yaml --saida dataset --limpar
 
-# Classes finais, na ordem dos IDs.
-# Para o escopo reduzido da proposta, deixe só rampa, escada, corrimao e piso_tatil:
-# as caixas das outras classes passam a ser descartadas.
+# Classes finais, na ordem dos IDs. É o escopo reduzido da proposta.
+# As outras quatro (elevador, barra_apoio, vaga_pcd, simbolo_acessibilidade) entram aqui
+# quando houver fontes com imagens delas.
 
 classes:
   - rampa
@@ -49,4 +49,5 @@ fontes:
     origem: publico
     mapa:
       braille_block: piso_tatil
-      braille_block_unusable: piso_tatil
+      # braille_block_unusable (6 caixas) e no_braille_block ficam de fora, como no treino
+      # do modelo entregue. Mudar este mapa refaz o sorteio de treino, validação e teste.

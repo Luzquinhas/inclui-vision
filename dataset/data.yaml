@@ -9,8 +9,4 @@ names:
   0: rampa
   1: escada
   2: corrimao
-  3: elevador
-  4: barra_apoio
-  5: vaga_pcd
-  6: piso_tatil
-  7: simbolo_acessibilidade
+  3: piso_tatil
