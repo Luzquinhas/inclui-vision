@@ -125,6 +125,20 @@ class TempoReal(unittest.TestCase):
         self.assertGreater(int(frame[:, :, 1].sum()), 0)   # texto verde do resumo
         self.assertGreater(int(frame[:, :, 2].sum()), 0)   # alerta em vermelho
 
+    def test_janela_cabe_na_tela(self):
+        import realtime
+        vertical = np.zeros((1920, 1080, 3), dtype=np.uint8)
+        self.assertEqual(realtime.ajustar_para_tela(vertical, 720, 1280).shape[:2], (720, 405))
+        pequeno = np.zeros((480, 640, 3), dtype=np.uint8)
+        self.assertIs(realtime.ajustar_para_tela(pequeno, 720, 1280), pequeno)   # nunca amplia
+        self.assertEqual(realtime.girar(vertical, 90).shape[:2], (1080, 1920))
+        self.assertIs(realtime.girar(vertical, 0), vertical)
+        # O painel cresce com o quadro: em vídeo de celular o texto ocupa mais pixels.
+        a, b = pequeno.copy(), vertical.copy()
+        realtime.desenhar_painel(a, {"escada"}, [], fps=30)
+        realtime.desenhar_painel(b, {"escada"}, [], fps=30)
+        self.assertGreater(int((b[:, :, 1] > 0).sum()), int((a[:, :, 1] > 0).sum()))
+
     def test_grade_de_amostras(self):
         import ver_amostras
         imagens = []

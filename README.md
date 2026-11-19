@@ -105,6 +105,8 @@ python src/realtime.py --fonte gravacao.mp4 --gravar demo.mp4
 
 A janela mostra as bounding boxes, um resumo por categoria do Inclui+, o FPS e o alerta de escada sem rampa. A tecla `q` encerra. Em computador sem GPU a taxa de quadros é bem menor que a medida na T4.
 
+A janela é reduzida para caber na tela (`--altura-janela`, 720 px por padrão); o arquivo de `--gravar` mantém o tamanho original. Se o vídeo abrir deitado, use `--girar 90` (ou 180, 270). Sem GPU, `--pular 2` processa um quadro a cada dois e deixa a reprodução mais fluida.
+
 Uma detecção continua valendo por 1 segundo depois de sumir (`--janela`), para o painel não piscar e o alerta não disparar só porque a rampa saiu do enquadramento por um instante. Com `--janela 0` a análise é quadro a quadro.
 
 O terceiro comando processa um vídeo gravado com o celular e salva o resultado anotado. É o jeito mais prático de gravar a demonstração em locais onde não dá para levar o notebook.
